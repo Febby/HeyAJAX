@@ -6,7 +6,7 @@ var url = "http://echo.jsontest.com/hello/world";
 var getNow = function () {
 
 	//moment.js
-	var result = moment().format('YYYY-MM-DD | HH:MM:ss:SS');
+	var result = moment().format('YYYY-MM-DD | HH:mm:ss:SS');
 
 	return result;
 };
