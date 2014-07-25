@@ -98,9 +98,38 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+//Google font
+@import url("//fonts.googleapis.com/css?family=Oswald:400,300,700");
+$bodybg:#f1c40f;
+$body-font-color:#ecf0f1;
+$body-font: 'Oswald', sans-serif;
 
+body{
+	background-color: $bodybg;
+	color: $body-font-color;
+	font-family: $body-font;
+	font-weight: 300;
+	h1{
+		font-size: 5em;
+		font-weight: 700;
+		color:white;
+	}
+	h2{
+		font-size: 3em;
+		letter-spacing: 2px;
+	}
+}
 
-
+.container{
+	width: 100%;
+	margin: 5em auto;
+	text-align: center;
+		color:black;
+	span{
+	
+		font-weight: 400;
+	}
+}
 
 
 

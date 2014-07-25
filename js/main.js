@@ -1,10 +1,9 @@
-
 var local = $('.local-time');
 var result = $('.results');
 var url = "http://echo.jsontest.com/hello/world";
 
 //Get Current Time
-var getNow = function(){
+var getNow = function () {
 
 	//moment.js
 	var result = moment().format('YYYY-MM-DD | HH:MM:ss:SS');
@@ -13,41 +12,43 @@ var getNow = function(){
 };
 
 //Displays current time in DOM
-var localClock = function (){
+var localClock = function () {
 	local.text(getNow());
 	//set Timeout 
 
-	t = setTimeout(function(){
-		localClock();},500);
+	t = setTimeout(function () {
+		localClock();
+	}, 500);
 };
 
 //AJAX Call
 
-var asyncDemo = function(url){
+var asyncDemo = function (url) {
 	$.ajax({
-		url: url ,
+		url: url,
 		type: 'GET',
-		beforeSend: function(){
+		beforeSend: function () {
 			result.append('<p> Request sent at: ' + getNow() + '</p>');
 		}
 	})
-	.done(function(data) {
-		console.log("success");
-		result.append('<p> Response at: ' + getNow() + '</p>');
-		result.append('<p> Response object <em>hello</em> is: <b> ' + data.hello + '</b></p><hr>');
-	})
-	.fail(function() {
-		console.log("error");
-	})
-	// .always(function() {
-	// 	console.log("complete");
-	// });
-	
+		.done(function (data) {
+			console.log("success");
+			result.append('<p> Response at: ' + getNow() + '</p>');
+			result.append('<p> Response object <em>hello</em> is: <b> ' + data.hello + '</b></p><hr>');
+			setTimeout(function () {
+				asyncDemo(url);
+			}, 10000);
+		})
+		.fail(function () {
+			console.log("error");
+		})
+
+
 };
 
 //Call asyncDemo and autoupdate localClock
 
-$(document).ready(function(){
+$(document).ready(function () {
 	localClock();
 	asyncDemo(url);
 
